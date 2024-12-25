@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { ToDoList } from "../context/ToDoListContext"
 
 export const CreateToDo = () => {
-  const [todoList, setToDoList] = useState([])
+  const { todoList, setToDoList } = useContext(ToDoList)
   const [inputTodo, setInputTodo] = useState("")
 
   const addTodo = (e) => {
@@ -14,20 +15,17 @@ export const CreateToDo = () => {
   }
 
   return (
-    <div>
-      <input
-        type="text" 
-        value={inputTodo}
-        onChange={(e)=> {setInputTodo(e.target.value)}}
-        className="bg-light-gray h-10 min-w-[500px] mr-3 p-2"
-      />
-      <button className="bg-dark-gray text-white py-2 px-4 rounded-3xl" onClick={addTodo}>Submit</button>
-
-      <ul>
-        {todoList.map((todo) => (
-          <li key={Math.random()}>{todo}</li>
-        ))}
-      </ul>
-    </div>
+      <form onSubmit={addTodo} className="w-full relative mb-10 mx-auto">
+        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 pl-2">
+            <div className="relative w-5 h-5 rounded-full border-2 border-gray-600"></div>
+        </div>
+        <input
+          type="text" 
+          value={inputTodo}
+          onChange={(e)=> {setInputTodo(e.target.value)}}
+          placeholder="Create a new todo..."
+          className="text-gray-300 text-lg w-full px-14 py-4 rounded-lg bg-very-dark-desaturated-blue placeholder-gray-400 focus:outline-none"
+        />
+      </form>
   )
 }
