@@ -1,10 +1,17 @@
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import { ToDoList } from "../context/ToDoListContext"
 
 export const CreateToDo = () => {
   const { todoList, setToDoList } = useContext(ToDoList)
   const [inputTodo, setInputTodo] = useState("")
-  const [nextToDoId, setNextToDoId] = useState(1)
+  const [nextToDoId, setNextToDoId] = useState(() => {
+    const saved = localStorage.getItem("nextToDoId");
+    return saved ? parseInt(saved) : 1;
+  })
+
+  useEffect(() => {
+    localStorage.setItem("nextToDoId", nextToDoId.toString());
+  }, [nextToDoId]);
 
   const addTodo = (e) => {
     e.preventDefault();

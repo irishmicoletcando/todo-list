@@ -3,7 +3,7 @@ import deleteIcon from "../assets/icon-cross.svg"
 import { ToDoList } from "../context/ToDoListContext"
 
 export const TodoElement = () => {
-  const { todoList, setToDoList } = useContext(ToDoList)
+  const { todoList, setToDoList, filteredTodos } = useContext(ToDoList)
 
   const CheckIcon = () => (
     <svg 
@@ -30,7 +30,7 @@ export const TodoElement = () => {
   return (
     <div>
       <ul className="divide-y divide-gray-700">
-        {todoList.map(todo => (
+        {filteredTodos.map(todo => (
           <li 
             key={todo.id}
             className="flex items-center px-6 py-4 group cursor-pointer"

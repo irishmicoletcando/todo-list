@@ -5,7 +5,7 @@ import { ToDoListHeader } from "../components/ToDoListHeader"
 
 export const ToDo = () => {
   return (
-    <div className="font-josefin-sans light:bg-gray-300 dark:bg-very-dark-blue h-lvh">
+    <div className="font-josefin-sans light:bg-gray-300 dark:bg-very-dark-blue h-screen">
       <div className="bg-desktop-dark bg-cover bg-no-repeat h-[320px] w-full flex items-center justify-center">
         
       </div>

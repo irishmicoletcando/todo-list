@@ -12,6 +12,14 @@ export default function App() {
     localStorage.getItem('theme') || 'light'
   )
 
+  const [filter, setFilter] = useState('all')
+  
+  const filteredTodos = todoList.filter((todo) => {
+    if (filter === 'active') return !todo.completed;
+    if (filter === 'completed') return todo.completed;
+    return true;
+  })
+
   useEffect(() => {
     const storedToDoList = JSON.parse(localStorage.getItem("todoList")) || [];
     setToDoList(storedToDoList);
@@ -34,7 +42,7 @@ export default function App() {
 
   return (
     <ThemeContext.Provider value = {{theme, toggleTheme}} >
-      <ToDoList.Provider value={{todoList, setToDoList }}>
+      <ToDoList.Provider value={{todoList, setToDoList, setFilter, filteredTodos }}>
         <ToDo />
       </ToDoList.Provider>
     </ThemeContext.Provider>
