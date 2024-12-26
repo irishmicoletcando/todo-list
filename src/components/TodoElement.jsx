@@ -1,5 +1,4 @@
 import { useState } from "react"
-// import { ToDoList } from "../App"
 
 export const TodoElement = () => {
   // const { todoList } = useContext(ToDoList)
@@ -34,7 +33,7 @@ export const TodoElement = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-very-dark-desaturated-blue rounded-lg">
+    <div>
       <ul className="divide-y divide-gray-700">
         {todos.map(todo => (
           <li 
@@ -64,6 +63,7 @@ export const TodoElement = () => {
           </li>
         ))}
       </ul>
+      <hr className="border-gray-700"/>
     </div>
   )
 }

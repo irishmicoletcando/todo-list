@@ -15,7 +15,7 @@ export const CreateToDo = () => {
   }
 
   return (
-      <form onSubmit={addTodo} className="w-full relative mb-10 mx-auto">
+      <form onSubmit={addTodo} className="w-full max-w-2xl relative mb-10 mx-auto">
         <div className="absolute left-4 top-1/2 transform -translate-y-1/2 pl-2">
             <div className="relative w-5 h-5 rounded-full border-2 border-gray-600"></div>
         </div>
