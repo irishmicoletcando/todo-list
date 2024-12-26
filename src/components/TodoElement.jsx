@@ -1,14 +1,9 @@
-import { useState } from "react"
+import { useContext } from "react"
+import deleteIcon from "../assets/icon-cross.svg"
+import { ToDoList } from "../context/ToDoListContext"
 
 export const TodoElement = () => {
-  // const { todoList } = useContext(ToDoList)
-  const [todos, setTodos] = useState([
-    { id: 1, text: 'Complete online JavaScript course', completed: true },
-    { id: 2, text: 'Jog around the park 3x', completed: false },
-    { id: 3, text: '10 minutes meditation', completed: false },
-    { id: 4, text: 'Read for 1 hour', completed: false },
-    { id: 5, text: 'Pick up groceries', completed: false }
-  ]);
+  const { todoList, setToDoList } = useContext(ToDoList)
 
   const CheckIcon = () => (
     <svg 
@@ -27,7 +22,7 @@ export const TodoElement = () => {
   );
 
   const toggleCompleted = (id) => {
-    setTodos(todos.map(todo => 
+    setToDoList(todoList.map(todo => 
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     ));
   };
@@ -35,7 +30,7 @@ export const TodoElement = () => {
   return (
     <div>
       <ul className="divide-y divide-gray-700">
-        {todos.map(todo => (
+        {todoList.map(todo => (
           <li 
             key={todo.id}
             className="flex items-center px-6 py-4 group cursor-pointer"
@@ -51,15 +46,20 @@ export const TodoElement = () => {
             `}>
               {todo.completed && <CheckIcon />}
             </div>
-            <span className={`
-              text-lg
-              ${todo.completed 
-                ? 'text-gray-300 dark:text-gray-500 line-through' 
-                : 'text-gray-500 dark:text-gray-300'
-              }
-            `}>
-              {todo.text}
-            </span>
+            <div className="flex justify-between w-full">
+              <span className={`
+                text-lg
+                ${todo.completed 
+                  ? 'text-gray-300 dark:text-gray-500 line-through' 
+                  : 'text-gray-500 dark:text-gray-300'
+                }
+              `}>
+                {todo.text}
+              </span>
+              <button>
+                <img src={deleteIcon} alt="delete-icon"/>
+              </button>
+            </div>
           </li>
         ))}
       </ul>

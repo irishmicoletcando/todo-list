@@ -4,15 +4,21 @@ import { ToDoList } from "../context/ToDoListContext"
 export const CreateToDo = () => {
   const { todoList, setToDoList } = useContext(ToDoList)
   const [inputTodo, setInputTodo] = useState("")
+  const [nextToDoId, setNextToDoId] = useState(1)
 
   const addTodo = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setToDoList([
       ...todoList,
-      inputTodo
-    ])
-    setInputTodo("")
-  }
+      {
+        id: nextToDoId, 
+        text: inputTodo.trim(),
+        completed: false, 
+      }
+    ]);
+    setInputTodo(""); 
+    setNextToDoId(nextToDoId + 1)
+  };
 
   return (
       <form onSubmit={addTodo} className="w-full max-w-2xl relative mb-10 mx-auto">
