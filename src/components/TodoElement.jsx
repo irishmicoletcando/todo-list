@@ -27,6 +27,10 @@ export const TodoElement = () => {
     ));
   };
 
+  const deleteTodo = (id) => {
+    setToDoList(todoList.filter(todo => todo.id !== id))
+  }
+
   return (
     <div>
       <ul className="divide-y divide-gray-700">
@@ -34,7 +38,6 @@ export const TodoElement = () => {
           <li 
             key={todo.id}
             className="flex items-center px-6 py-4 group cursor-pointer"
-            onClick={() => toggleCompleted(todo.id)}
           >
             <div className={`
               relative w-5 h-5 rounded-full border-2 
@@ -43,7 +46,9 @@ export const TodoElement = () => {
                 : 'border-gray-600'
               }
               mr-4 flex-shrink-0
-            `}>
+            `}
+              onClick={() => toggleCompleted(todo.id)}
+            >
               {todo.completed && <CheckIcon />}
             </div>
             <div className="flex justify-between w-full">
@@ -56,7 +61,7 @@ export const TodoElement = () => {
               `}>
                 {todo.text}
               </span>
-              <button>
+              <button onClick={() => deleteTodo(todo.id)}>
                 <img src={deleteIcon} alt="delete-icon"/>
               </button>
             </div>
