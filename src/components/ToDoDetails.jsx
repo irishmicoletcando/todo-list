@@ -4,8 +4,8 @@ import { ToDoList } from "../context/ToDoListContext";
 export const ToDoDetails = () => {
   const { todoList, setToDoList, filter, setFilter,  filteredTodos } = useContext(ToDoList)
 
-  const clearCompleted = (id) => {
-    setToDoList(todoList.filter(todo => todo.id !== id))
+  const clearCompleted = () => {
+    setToDoList(todoList.filter(todo => !todo.completed))
   }
 
   return (
