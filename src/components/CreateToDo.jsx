@@ -24,7 +24,7 @@ export const CreateToDo = () => {
           value={inputTodo}
           onChange={(e)=> {setInputTodo(e.target.value)}}
           placeholder="Create a new todo..."
-          className="text-gray-300 text-lg w-full px-14 py-4 rounded-lg bg-very-dark-desaturated-blue placeholder-gray-400 focus:outline-none"
+          className="text-gray-500 dark:text-gray-300 text-lg w-full px-14 py-4 rounded-lg light:bg-very-light-gray dark:bg-very-dark-desaturated-blue placeholder-gray-400 focus:outline-none"
         />
       </form>
   )

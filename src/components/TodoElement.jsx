@@ -54,8 +54,8 @@ export const TodoElement = () => {
             <span className={`
               text-lg
               ${todo.completed 
-                ? 'text-gray-500 line-through' 
-                : 'text-gray-300'
+                ? 'text-gray-300 dark:text-gray-500 line-through' 
+                : 'text-gray-500 dark:text-gray-300'
               }
             `}>
               {todo.text}
