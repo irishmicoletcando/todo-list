@@ -42,7 +42,7 @@ export default function App() {
 
   return (
     <ThemeContext.Provider value = {{theme, toggleTheme}} >
-      <ToDoList.Provider value={{todoList, setToDoList, setFilter, filteredTodos }}>
+      <ToDoList.Provider value={{todoList, setToDoList, filter, setFilter, filteredTodos }}>
         <ToDo />
       </ToDoList.Provider>
     </ThemeContext.Provider>

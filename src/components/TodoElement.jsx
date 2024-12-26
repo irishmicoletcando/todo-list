@@ -61,7 +61,7 @@ export const TodoElement = () => {
               `}>
                 {todo.text}
               </span>
-              <button onClick={() => deleteTodo(todo.id)}>
+              <button onClick={() => deleteTodo(todo.id)} className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <img src={deleteIcon} alt="delete-icon"/>
               </button>
             </div>
